@@ -9,6 +9,12 @@
 
         <!-- Styles / Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <script>
+            const isInitialized = localStorage.getItem("kioskInitialized");
+            if (!isInitialized) {
+                window.location.href = "/initial";
+            }
+        </script>
     </head>
 
     <body class="overscroll-none bg-gradient-to-tr from-BMain to-BDark h-screen font-sans">
@@ -17,20 +23,21 @@
             
             <!--Heading Div-->
             <div class="xl:absolute xl:top-0 xl:left-0 xl:p-[2%] 2xl:static 2xl:p-0 flex justify-between items-baseline w-full mt-2">
-                <div class="text-[5vh] text-BLight font-semibold">
-                    Date & Time
-                </div>
-                <div class="text-[5vh] text-BLight font-bold">
-                    KIOSK 1
+                <span id="datetime" class="text-[5vh] text-BLight font-semibold">
+                    
+                </span>
+                <div id="kioskNumberHeading" class="text-[5vh] text-BLight font-bold">
+                    
                 </div>
             </div>
 
             <!--Smiley Div-->
             <div class="flex-grow flex justify-center items-center">
             <div class="bg-gradient-to-br from-white to-BLight rounded-xl p-1">
-                <div class="flex justify-center 2xl:h-[85vh] xl:h-[70vh] rounded-3xl">
+                <h2 class="mt-24 text-[7vh] text-center text-BDark font-bold">How was your experience?</h2>
+                <div class="flex justify-center mt-[-2px] 2xl:h-[64vh] xl:h-[50vh] rounded-3xl">
                     <!--Angry-->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="filter drop-shadow-[2px_2px_10px_rgba(222,222,222,1)] fill-red-600 w-[70%] transition-[700ms] ease-in-out active:w-[75%] active:-translate-y-2 active:fill-red-800" viewBox="0 0 640 640">
+                    <svg xmlns="http://www.w3.org/2000/svg" onclick="selectSmiley('Angry')" class="filter drop-shadow-[2px_2px_10px_rgba(222,222,222,1)] fill-red-600 w-[70%] transition-[700ms] ease-in-out active:w-[75%] active:-translate-y-2 active:fill-red-800" viewBox="0 0 640 640">
                         <!--!Font Awesome Free v7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
                         <path d="M64 320C64 178.6 178.6 64 320 64C461.4 64 576 178.6 576 320C576
                         461.4 461.4 576 320 576C178.6 576 64 461.4 64 320zM320 432C344.1 432 365.4 443.8 378.5 462C386.2
@@ -44,7 +51,7 @@
                         347.8 310.5 358.3 307L368 303.8L368 304.1C368 321.8 382.3 336.1 400 336.1C417.7 336.1 432 321.8 432 304.1z"/>
                     </svg>
                     <!--Sad-->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="filter drop-shadow-[2px_2px_10px_rgba(222,222,222,1)] fill-blue-500 w-[70%] transition-[700ms] ease-in-out active:w-[75%] active:-translate-y-2 active:fill-blue-700" viewBox="0 0 640 640">
+                    <svg xmlns="http://www.w3.org/2000/svg" onclick="selectSmiley('Sad')" class="filter drop-shadow-[2px_2px_10px_rgba(222,222,222,1)] fill-blue-500 w-[70%] transition-[700ms] ease-in-out active:w-[75%] active:-translate-y-2 active:fill-blue-700" viewBox="0 0 640 640">
                     <!--!Font Awesome Free v7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
                     <path d="M320 576C461.4 576 576 461.4 576 320C576 178.6 461.4 64 320 64C178.6 64 64 178.6 64
                     320C64 461.4 178.6 576 320 576zM410.6 462.1C390.2 434.1 357.2 416 320 416C282.8 416 249.8 434.1
@@ -55,7 +62,7 @@
                     304 368 289.7 368 272C368 254.3 382.3 240 400 240z"/>
                     </svg>
                     <!--Neutral-->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="filter drop-shadow-[2px_2px_10px_rgba(222,222,222,1)] fill-yellow-500 w-[70%] transition-[700ms] ease-in-out active:w-[75%] active:-translate-y-2 active:fill-yellow-700" viewBox="0 0 640 640">
+                    <svg xmlns="http://www.w3.org/2000/svg" onclick="selectSmiley('Neutral')" class="filter drop-shadow-[2px_2px_10px_rgba(222,222,222,1)] fill-yellow-500 w-[70%] transition-[700ms] ease-in-out active:w-[75%] active:-translate-y-2 active:fill-yellow-700" viewBox="0 0 640 640">
                     <!--!Font Awesome Free v7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
                     <path d="M320 576C461.4 576 576 461.4 576 320C576 178.6 461.4 64 320 64C178.6
                     64 64 178.6 64 320C64 461.4 178.6 576 320 576zM240 240C257.7 240 272 254.3 272 272C272 289.7
@@ -65,7 +72,7 @@
                     432 216 421.3 216 408C216 394.7 226.7 384 240 384z"/>
                     </svg>
                     <!--Happy-->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="filter drop-shadow-[2px_2px_10px_rgba(222,222,222,1)] fill-orange-500 w-[70%] transition-[700ms] ease-in-out active:w-[75%] active:-translate-y-2 active:fill-orange-700" viewBox="0 0 640 640">
+                    <svg xmlns="http://www.w3.org/2000/svg" onclick="selectSmiley('Happy')" class="filter drop-shadow-[2px_2px_10px_rgba(222,222,222,1)] fill-orange-500 w-[70%] transition-[700ms] ease-in-out active:w-[75%] active:-translate-y-2 active:fill-orange-700" viewBox="0 0 640 640">
                     <!--!Font Awesome Free v7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
                     <path d="M320 576C461.4 576 576 461.4 576 320C576 178.6 461.4 64 320 64C178.6
                     64 64 178.6 64 320C64 461.4 178.6 576 320 576zM229.4 385.9C249.8 413.9 282.8 432 320 432C357.2
@@ -76,7 +83,7 @@
                     272C432 289.7 417.7 304 400 304C382.3 304 368 289.7 368 272C368 254.3 382.3 240 400 240z"/>
                     </svg>
                     <!--Overjoyed-->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="filter drop-shadow-[2px_2px_10px_rgba(222,222,222,1)] fill-green-600 w-[70%] transition-[700ms] ease-in-out active:w-[75%] active:-translate-y-2 active:fill-green-800" viewBox="0 0 640 640">
+                    <svg xmlns="http://www.w3.org/2000/svg" onclick="selectSmiley('Overjoyed')" class="filter drop-shadow-[2px_2px_10px_rgba(222,222,222,1)] fill-green-600 w-[70%] transition-[700ms] ease-in-out active:w-[75%] active:-translate-y-2 active:fill-green-800" viewBox="0 0 640 640">
                     <!--!Font Awesome Free v7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
                     <path d="M320 576C461.4 576 576 461.4 576 320C576 178.6 461.4 64 320
                     64C178.6 64 64 178.6 64 320C64 461.4 178.6 576 320 576zM229.4 385.9C249.8 413.9 282.8
@@ -99,5 +106,7 @@
                 <img class="w-[10%]" src="/img/sm-logo.png"></img>
             </div>
         <section>
+    <script src="{{ asset('js/feedback.js') }}"></script>
     </body>
+
 </html>

@@ -2,6 +2,7 @@
 ```bash
     php artisan key:generate
 ```
+
 # Resetting Kiosk initialization
 ## 1. Right click, inspect page element
 ## 2. On console, type in the following one-at-a-time:

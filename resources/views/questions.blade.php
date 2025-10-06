@@ -14,14 +14,14 @@
     <body class="overscroll-none bg-gradient-to-tr from-BMain to-BDark h-scr]] een font-sans">
         <section class="w-screen h-screen flex flex-col 2xl:justify-none xl:justify-center">
         <div class="flex flex-col p-8 mt-[-2%] 2xl:items-none xl:items-between">
-            
+
             <!--Heading Div-->
             <div class="xl:absolute xl:top-0 xl:left-0 xl:p-[2%] 2xl:static 2xl:p-0 flex justify-between items-baseline w-full mt-2">
                 <span id="datetime" class="text-[5vh] text-BLight font-semibold">
-                    
+
                 </span>
                 <div id="kioskNumberHeading" class="text-[5vh] text-BLight font-bold">
-                    
+
                 </div>
             </div>
 
@@ -33,7 +33,7 @@
                 <div id="questions" class="grid grid-cols-2 gap-12 w-full max-w-[90%] mx-auto 2xl:mt-[2%] xl:mt-[3%]"></div>
 
                 <button id="nextBtn" type="submit"
-                        class="block mx-auto bg-white 2xl:mt-[5%] xl:mt-[4%] border-4 border-BDark rounded-xl 2xl:p-6 xl:p-4 text-BDark
+                        class="block mx-auto bg-none 2xl:mt-[5%] xl:mt-[4%] border-4 border-BDark rounded-xl 2xl:p-6 xl:p-4 text-BDark
                         text-3xl font-semibold w-54 transition-[500ms] hover:bg-BMain hover:text-white">
                     Skip
                 </button>

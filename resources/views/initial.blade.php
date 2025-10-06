@@ -16,10 +16,17 @@
         <h2 class="text-3xl font-bold mb-12 text-BDark">Initialize Kiosk</h2>
 
         <form id="kioskSetupForm" class="flex flex-col gap-6">
-        <input type="number" id="kioskNumber" placeholder="Kiosk Number" 
-                class="border-1 border-BDark rounded-lg p-4 text-xl text-center" required>
-        <input type="text" id="attendeeName" placeholder="Your Name" 
-                class="border-1 border-BDark rounded-lg p-4 text-xl text-center" required>
+            <select id="kioskNumber" class="border-1 border-BDark rounded-lg p-4 text-xl text-center" required>
+                <option value="Prototype">Prototype</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+            <select id="restroomType" class="border-1 border-BDark rounded-lg p-4 text-xl text-center" required>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
 
         <button type="submit" 
                 class="bg-BDark text-white rounded-xl p-4 text-2xl font-semibold w-44
@@ -42,13 +49,13 @@ document.addEventListener("DOMContentLoaded", () => {
     form.addEventListener("submit", e => {
         e.preventDefault();
         const kioskNumber = document.getElementById("kioskNumber").value.trim();
-        const attendeeName = document.getElementById("attendeeName").value.trim();
+        const restroomType = document.getElementById("restroomType").value.trim();
 
-        if (!kioskNumber || !attendeeName) return;
+        if (!kioskNumber || !restroomType) return;
 
         localStorage.setItem("kioskInitialized", "true");
         localStorage.setItem("kioskNumber", kioskNumber);
-        localStorage.setItem("attendeeName", attendeeName);
+        localStorage.setItem("restroomType", restroomType);
 
         // Redirect to smiley welcome page
         window.location.href = "/";

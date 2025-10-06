@@ -33,7 +33,7 @@
                 <div id="questions" class="grid grid-cols-2 gap-12 w-full max-w-[90%] mx-auto 2xl:mt-[2%] xl:mt-[3%]"></div>
 
                 <button id="nextBtn" type="submit"
-                        class="block mx-auto bg-none 2xl:mt-[5%] xl:mt-[4%] border-4 border-BDark rounded-xl 2xl:p-6 xl:p-4 text-BDark
+                        class="block mx-auto bg-white 2xl:mt-[5%] xl:mt-[4%] border-4 border-BDark rounded-xl 2xl:p-6 xl:p-4 text-BDark
                         text-3xl font-semibold w-54 transition-[500ms] hover:bg-BMain hover:text-white">
                     Skip
                 </button>

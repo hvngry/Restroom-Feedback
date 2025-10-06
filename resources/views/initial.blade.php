@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Check if kiosk already initialized
     if (localStorage.getItem("kioskInitialized")) {
-        window.location.href = "/"; // redirect to smiley welcome page
+        window.location.href = "{{ url('/') }}"; // redirect to smiley welcome page
         return;
     }
 
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("restroomType", restroomType);
 
         // Redirect to smiley welcome page
-        window.location.href = "/";
+        window.location.href = "{{ url('/') }}";
 
     });
 });

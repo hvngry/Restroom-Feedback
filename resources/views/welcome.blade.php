@@ -9,10 +9,11 @@
 
         <!-- Styles / Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
         <script>
             const isInitialized = localStorage.getItem("kioskInitialized");
             if (!isInitialized) {
-                window.location.href = "/initial";
+                window.location.href = "{{ url('/initial') }}";
             }
         </script>
     </head>

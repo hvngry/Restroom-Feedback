@@ -9,6 +9,6 @@
 ```bash
     localStorage.removeItem("kioskInitialized");
     localStorage.removeItem("kioskNumber");
-    localStorage.removeItem("attendeeName");
+    localStorage.removeItem("restroomType");
 ```
 ## 3. Refresh page
